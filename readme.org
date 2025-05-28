@@ -1,0 +1,14 @@
+* TLDR;
+    A magisk to run a termux app shell(without start termux-app).
+
+
+* Quick Start 
+    magisk install zip modules, reboot .
+    In ~Magisk-ssh~ or ~adb~ shell as *root*:
+    run command =termux_shell=.
+
+
+* Acknowledgements
+    This project wouldn't be possible without the following open-source projects and libraries:
+    - [[adb_termux_shell][https://github.com/NyaMisty/adb_termux_shell]]
+    - [[gosu][https://github.com/tianon/gosu]]
