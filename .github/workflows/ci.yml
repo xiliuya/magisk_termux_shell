@@ -5,6 +5,8 @@ on:
       - "v*.*.*"
 
 jobs:
+  permissions:
+    contents: write
   build:
     name: Build a magisk module zip
     runs-on: ubuntu-latest
