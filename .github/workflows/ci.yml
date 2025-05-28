@@ -1,5 +1,8 @@
 name: magisk module build
-on: [push,pull_request]
+on:
+  push:
+    tags:
+      - "v*.*.*"
 
 jobs:
   build:
@@ -23,7 +26,6 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Upload # 上传
         uses: softprops/action-gh-release@v2 # 使用第三方actions 上传
-        if: github.ref_type == 'tag'
         with:
           files: magisk_termux_shell.zip # 上传的文件
 
