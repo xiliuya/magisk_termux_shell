@@ -1,0 +1,38 @@
+#!/system/bin/sh
+
+export TERMUX_DIR="/data/data/com.termux"
+if [ ! -d $TERMUX_DIR ];then
+    echo "Please unlock your phone."
+    echo "OR install Termux app."
+    exit
+fi
+MAGISK_MOD_DIR="/data/adb/modules/Magisk-Termux-Shell/"
+let TERMUX_ID=$(ls -dn $TERMUX_DIR | cut -d' ' -f3 | cut -b2-5)
+TERMUX_USER="u0_a${TERMUX_ID}"
+ARCH=$(uname -m)
+case "$ARCH" in
+    "aarch64")
+        MAGISK_GOSU="$MAGISK_MOD_DIR/gosu-arm64"
+        ;;
+    "armhf")
+        MAGISK_GOSU="$MAGISK_MOD_DIR/gosu-arm"
+        ;;
+    "x86_64")
+        MAGISK_GOSU="$MAGISK_MOD_DIR/gosu-amd64"
+        ;;
+    "i386")
+        MAGISK_GOSU="$MAGISK_MOD_DIR/gosu-386"
+        ;;
+    *)
+        echo "Invalid Arch"
+        ;;
+esac
+
+TERMUX_FILE="$TERMUX_DIR/files/home/termux.sh"
+if [ ! -f $TERMUX_FILE ];then
+    cp "$MAGISK_MOD_DIR/termux.sh" "$TERMUX_FILE"
+    chcon u:object_r:app_data_file:s0:c245,c256,c512,c768 "$TERMUX_FILE"
+fi
+
+sh "$MAGISK_MOD_DIR/gen_passwd_group.sh"
+su -c "$MAGISK_GOSU $TERMUX_USER $TERMUX_FILE"

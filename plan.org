@@ -1,0 +1,11 @@
+* file gen
+ - [x] passwd file gen
+ - [x] group file gen
+* gosu
+ - [x] mod gosu to local passwd/group
+* run script
+ - [x] a script to run termux shell in magisk modules
+* package a module
+ - [x] magisk_termux_shell
+* a git action for modules package
+ - [ ] ci.yaml
