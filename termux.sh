@@ -24,6 +24,5 @@ export TMPDIR="/data/data/com.termux/files/usr/tmp"1~
 export COLORTERM="truecolor"
 export HISTCONTROL="ignoreboth"
 
-#eval $(resize)
 cd "$HOME"
 exec "$SHELL" -l

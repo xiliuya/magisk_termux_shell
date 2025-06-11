@@ -1,7 +1,7 @@
 id=Magisk-Termux-Shell
 name=Magisk Termux Shell
-version=1.0.11
-versionCode=14
+version=1.0.12
+versionCode=15
 author=xiliuya
 description=Magisk module for run a termux shell without start termux app.
 updateJson=https://raw.githubusercontent.com/xiliuya/magisk_termux_shell/main/update.json
